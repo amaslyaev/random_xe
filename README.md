@@ -7,7 +7,7 @@ We never being 100% sure in real randomness and cryptographic quality of any ext
 2. Tool to transform several additional bytes of extra entropy into complete random-like mess (HashRandom class).
 
 ### Why we can be sure that combining independent random sources can only improve quality of RNG
-<coming soon...>
+coming soon...
 
 ### How to embed
 
