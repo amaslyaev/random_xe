@@ -24,7 +24,7 @@ setup(
 
     version='1.0.0',  # Required
 
-    description='Random number generator with eXtra Enthropy',  # Required
+    description='Random number generator with eXtra Entropy',  # Required
 
     long_description=long_description,  # Optional
     long_description_content_type='text/markdown',  # Optional (see note above)
