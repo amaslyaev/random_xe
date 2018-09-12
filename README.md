@@ -41,7 +41,7 @@ Type somethig: ldjggndjKfuT830
 171962833922528548054430533031273437533
 ```
 
-It is very good idea ALWAYS combine additional entropy with SystemRandom source:
+ALWAYS combine additional entropy with SystemRandom source:
 ```python
 >>> from getpass import getpass
 >>> from time import perf_counter
