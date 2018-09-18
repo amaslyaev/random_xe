@@ -7,7 +7,29 @@ We never being 100% sure in real randomness and cryptographic quality of any ext
 2. Tool to transform several additional bytes of extra entropy into complete random-like mess (HashRandom class).
 
 ### Why we can be sure that combining independent random sources can only improve quality of RNG
-*coming soon...*
+Imagine the situation. We have two independent streams of bits, **x** and **y**, and can predict upcoming bits with probabilities respectively **px** and **py**. Each probability lay in [0 .. 1] interval, but really if we have prediction tool that does not confuse us deliberately, probabilities lay in [0.5 .. 1] interval. After **x XOR y** operation we have **r** stream. Prediction probability **pr** is a sum of probabilities of two right and two wrong predictions:
+
+**pr = px\*py + (1-px)\*(1-py) = 2\*px\*py - px - py + 1**
+
+Let`s find the condition for situation when **pr** exceeds **px**.
+
+**2\*px\*py - px - py + 1 &gt; px**
+
+**2\*px\*py - 2\*px &gt; py - 1**
+
+**2\*px\*(py - 1) &gt; py - 1**
+
+**py** is less than 1, so we convert **(py - 1)** into **(1 - py)**.
+
+**2\*px\*(1 - py) &lt; 1 - py**
+
+After cutting **(1 - py)** we have:
+
+**2\*px &lt; 1**
+
+**px &lt; 0.5**
+
+Therefore, **pr** can exceed **px** only if **pr** predictor deliberately makes wrong predictions, so uncertainity about **x XOR y** cannot be less than maximal uncertainity about the **x** and **y**. 
 
 ### How to embed
 
@@ -60,3 +82,5 @@ ALWAYS combine additional entropy with SystemRandom source:
 >>> myrandom3.getrandbits(128)
 214560115455406687033892278367232976155
 ```
+
+Detailed description and discussion (in Russian): https://habr.com/post/423093/
